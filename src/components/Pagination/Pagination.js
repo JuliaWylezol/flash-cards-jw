@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import AppContext from "../../context";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import LeftArrowIcon from "../../icons/leftArrow.svg";
 import RightArrowIcon from "../../icons/rightArrow.svg";
@@ -17,20 +16,37 @@ const ArrowWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Pagination = () => {
+const Pagination = ({
+  currentPage,
+  decksPerPage,
+  setCurrentPage,
+  decksLength,
+}) => {
   const pageNumbers = [];
-  const { decks, decksPerPage, paginateR, paginateL } = React.useContext(
-    AppContext
-  );
 
-  for (let i = 1; i <= Math.ceil(decks.length / decksPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(decksLength / decksPerPage); i++) {
     pageNumbers.push(i);
   }
 
+  const paginateRight = () => {
+    if (Math.ceil(decksLength / decksPerPage) === currentPage) {
+      console.log(currentPage);
+      return;
+    }
+    setCurrentPage(currentPage + 1);
+  };
+
+  const paginateLeft = () => {
+    if (currentPage === 1) {
+      return;
+    }
+    setCurrentPage(currentPage - 1);
+  };
+
   return (
     <ArrowWrapper>
-      <ButtonIcon onClick={() => paginateL()} icon={LeftArrowIcon} />
-      <ButtonIcon onClick={() => paginateR()} icon={RightArrowIcon} />
+      <ButtonIcon onClick={() => paginateLeft()} icon={LeftArrowIcon} />
+      <ButtonIcon onClick={() => paginateRight()} icon={RightArrowIcon} />
     </ArrowWrapper>
   );
 };

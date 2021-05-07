@@ -22,7 +22,7 @@ const ModalContentWrapper = styled.div`
   z-index: 2;
 `;
 
-const ModalWrapper = styled.div`
+const Overlay = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -71,7 +71,7 @@ const Modal = ({
   };
   return (
     <>
-      <ModalWrapper />
+      <Overlay />
       <ModalContentWrapper>
         <ButtonIcon onClick={closeModalFn} exit icon={exitIcon} />
         <ButtonIcon onClick={deleteCategory} icon={trashIcon} trash />

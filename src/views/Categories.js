@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
@@ -20,11 +20,10 @@ const DecksWrapper = styled.div`
   align-self: flex-start;
 `;
 
-export const Categories = (props) => {
-  const { currentPage, decksPerPage, decks, setCurrentPage } = React.useContext(
-    AppContext
-  );
-  console.log(props);
+const Categories = (props) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [decksPerPage, setDecksPerPage] = useState(9);
+  const { decks } = React.useContext(AppContext);
   const indexOfLastDeck = currentPage * decksPerPage;
   const indexOfFirstDeck = indexOfLastDeck - decksPerPage;
   const currentDecks = decks.slice(indexOfFirstDeck, indexOfLastDeck);
@@ -36,7 +35,7 @@ export const Categories = (props) => {
         to="/"
         icon={BackIcon}
         back
-        onClick={() => setCurrentPage()}
+        onClick={() => setCurrentPage(1)}
       />
       <Heading>Choose category deck</Heading>
       <DecksWrapper>
@@ -49,15 +48,21 @@ export const Categories = (props) => {
           />
         ))}
       </DecksWrapper>
-      {decks.length > 9 && <Pagination />}
+      {decks.length > decksPerPage && (
+        <Pagination
+          currentPage={currentPage}
+          decksPerPage={decksPerPage}
+          setCurrentPage={setCurrentPage}
+          decksLength={decks.length}
+        />
+      )}
     </MainTemplate>
   );
 };
 
 const mapStateToProps = (state) => {
   const { decks } = state;
-  console.log(state);
   return { decks };
 };
 
-export default connect(mapStateToProps)(Categories);
+export default Categories;
