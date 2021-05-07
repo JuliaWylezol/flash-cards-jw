@@ -38,6 +38,10 @@ const ButtonIcon = styled.button`
       padding: 0;
       top: 20px;
       right: 20px;
+      @media (max-width: 450px) {
+        width: 30px;
+        height: 30px;
+      }
     `}
 
     ${({ trash }) =>

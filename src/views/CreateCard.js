@@ -27,6 +27,18 @@ const CardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 650px) {
+    width: 500px;
+  }
+  @media (max-width: 530px) {
+    width: 450px;
+  }
+  @media (max-width: 470px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 300px;
+  }
 `;
 
 const CreateCard = () => {

@@ -5,6 +5,9 @@ const Heading = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   text-align: center;
+  @media (max-width: 420px) {
+    font-size: 25px;
+  }
 
   ${({ welcomeText }) =>
     welcomeText &&

@@ -6,6 +6,11 @@ const SelectInput = styled.select`
   width: 250px;
   border: none;
   font-size: 20px;
+  @media (max-width: 420px) {
+    height: 30px;
+    width: 170px;
+    font-size: ${({ theme }) => theme.fontSize.s};
+  }
 `;
 
 export default SelectInput;
