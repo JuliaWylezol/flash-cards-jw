@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
-import AppContext from "../../context";
 import plusIcon from "../../icons/plus.svg";
 import categoryIcon from "../../icons/category.svg";
 import randomIcon from "../../icons/random.svg";
@@ -19,6 +18,14 @@ const SidebarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+
+  @media (max-width: 600px) {
+    justify-content: space-around;
+  }
+  @media (max-width: 400px) {
+    padding-top: 0px;
+    justify-content: center;
+  }
 `;
 
 const NavOptionWrapper = styled.div`
@@ -28,6 +35,10 @@ const NavOptionWrapper = styled.div`
   align-items: center;
   margin-bottom: 100px;
   width: 200px;
+  @media (max-width: 815px) {
+    width: 80%;
+    margin-bottom: 80px;
+  }
 `;
 
 const Sidebar = () => (

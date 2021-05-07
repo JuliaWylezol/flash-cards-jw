@@ -7,6 +7,14 @@ const Paragraph = styled.p`
   align-self: center;
   margin: 0;
 
+  @media (max-width: 570px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 470px) {
+    font-size: 16px;
+  }
+
   ${({ onCard }) =>
     onCard &&
     css`

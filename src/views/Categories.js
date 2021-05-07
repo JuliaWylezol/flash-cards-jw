@@ -60,9 +60,4 @@ const Categories = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  const { decks } = state;
-  return { decks };
-};
-
 export default Categories;

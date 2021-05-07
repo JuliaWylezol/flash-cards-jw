@@ -10,6 +10,14 @@ const ButtonIcon = styled.button`
   cursor: pointer;
   background-color: transparent;
 
+  @media (max-width: 700px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media (max-width: 570px) {
+    font-size: 20px;
+  }
+
   ${({ exit }) =>
     exit &&
     css`

@@ -4,6 +4,7 @@ import Heading from "../components/Heading/Heading";
 import Sidebar from "../components/Sidebar/Sidebar";
 import MainTemplate from "../templates/MainTemplate";
 import ChatIcon from "../icons/chat.svg";
+import Icon from "../components/Icon/Icon";
 
 const GreetWrapper = styled.div`
   float: right;
@@ -15,6 +16,14 @@ const GreetWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 650px) {
+    width: 65%;
+  }
+  @media (max-width: 400px) {
+    width: 55%;
+    padding-right: 30px;
+  }
 `;
 
 const MainMenu = () => (
@@ -22,7 +31,7 @@ const MainMenu = () => (
     <Sidebar />
     <GreetWrapper>
       <Heading welcomeText>Welcome to Flash Cards!</Heading>
-      <img src={ChatIcon} alt="Chat icon" />
+      <Icon src={ChatIcon} />
     </GreetWrapper>
   </MainTemplate>
 );
