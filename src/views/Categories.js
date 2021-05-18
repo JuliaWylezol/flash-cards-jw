@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import AppContext from "../context";
 import MainTemplate from "../templates/MainTemplate";
@@ -20,7 +19,14 @@ const DecksWrapper = styled.div`
   align-self: flex-start;
 `;
 
-const Categories = (props) => {
+const ContentWrapper = styled.div`
+  width: 100%;
+  @media (max-width: 535px) {
+    margin-top: 40px;
+  }
+`;
+
+const Categories = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [decksPerPage, setDecksPerPage] = useState(9);
   const { decks } = React.useContext(AppContext);
@@ -37,25 +43,27 @@ const Categories = (props) => {
         back
         onClick={() => setCurrentPage(1)}
       />
-      <Heading>Choose category deck</Heading>
-      <DecksWrapper>
-        {currentDecks.map((deck, index) => (
-          <Deck
-            category={deck.category}
-            numberOfCards={deck.cards.length}
-            index={index}
-            key={deck.category}
+      <ContentWrapper>
+        <Heading>Choose category deck</Heading>
+        <DecksWrapper>
+          {currentDecks.map((deck, index) => (
+            <Deck
+              category={deck.category}
+              numberOfCards={deck.cards.length}
+              index={index}
+              key={deck.category}
+            />
+          ))}
+        </DecksWrapper>
+        {decks.length > decksPerPage && (
+          <Pagination
+            currentPage={currentPage}
+            decksPerPage={decksPerPage}
+            setCurrentPage={setCurrentPage}
+            decksLength={decks.length}
           />
-        ))}
-      </DecksWrapper>
-      {decks.length > decksPerPage && (
-        <Pagination
-          currentPage={currentPage}
-          decksPerPage={decksPerPage}
-          setCurrentPage={setCurrentPage}
-          decksLength={decks.length}
-        />
-      )}
+        )}
+      </ContentWrapper>
     </MainTemplate>
   );
 };
