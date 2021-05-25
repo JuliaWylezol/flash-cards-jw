@@ -98,10 +98,18 @@ const Card = ({ startDeck }) => {
     <MainTemplate>
       <ContentWrapper>
         {isFrontActive && !isSummaryActive && (
-          <CardFront card={frontView} switchCard={switchToBack} />
+          <CardFront
+            card={frontView}
+            switchCard={switchToBack}
+            category={startDeck.category}
+          />
         )}
         {!isFrontActive && !isSummaryActive && (
-          <CardBack card={backView} switchCard={switchToFront} />
+          <CardBack
+            card={backView}
+            switchCard={switchToFront}
+            category={startDeck.category}
+          />
         )}
         {isSummaryActive && <Summary correctAnswers={correctAnswers} />}
         <CounterWrapper>

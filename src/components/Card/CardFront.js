@@ -23,20 +23,23 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
 `;
 
-const CardFront = ({ card, switchCard }) => {
+const CardFront = ({ card, switchCard, category }) => {
   const { resetActiveDeck } = React.useContext(AppContext);
   return (
-    <CardWrapper>
-      <ButtonIcon
-        as={Link}
-        to="/"
-        icon={CloseIcon}
-        onClick={() => resetActiveDeck()}
-        exit
-      />
-      <Paragraph>{card}</Paragraph>
-      <Button onClick={() => switchCard()}>Show answer</Button>
-    </CardWrapper>
+    <>
+      <Heading>{category}</Heading>
+      <CardWrapper>
+        <ButtonIcon
+          as={Link}
+          to="/"
+          icon={CloseIcon}
+          onClick={() => resetActiveDeck()}
+          exit
+        />
+        <Paragraph>{card}</Paragraph>
+        <Button onClick={() => switchCard()}>Show answer</Button>
+      </CardWrapper>
+    </>
   );
 };
 
