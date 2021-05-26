@@ -28,6 +28,9 @@ const ButtonIcon = styled.button`
       right: 5px;
       width: 50px;
       height: 50px;
+      @media (max-width: 470px) {
+        width: 25px;
+      }
     `}
 
   ${({ back }) =>

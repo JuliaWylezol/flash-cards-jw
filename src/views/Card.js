@@ -7,6 +7,7 @@ import CardFront from "../components/Card/CardFront";
 import CardBack from "../components/Card/CardBack";
 import Heading from "../components/Heading/Heading";
 import Summary from "../components/Summary/Summary";
+import Paragraph from "../components/Paragraph/Paragraph";
 
 const ContentWrapper = styled.div`
   width: 100%;
@@ -23,6 +24,12 @@ const CounterWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+  @media (max-width: 725px) {
+    width: 90%;
+  }
 `;
 
 const Card = ({ startDeck }) => {
@@ -97,24 +104,17 @@ const Card = ({ startDeck }) => {
   return (
     <MainTemplate>
       <ContentWrapper>
+        <Heading>{startDeck.category}</Heading>
         {isFrontActive && !isSummaryActive && (
-          <CardFront
-            card={frontView}
-            switchCard={switchToBack}
-            category={startDeck.category}
-          />
+          <CardFront card={frontView} switchCard={switchToBack} />
         )}
         {!isFrontActive && !isSummaryActive && (
-          <CardBack
-            card={backView}
-            switchCard={switchToFront}
-            category={startDeck.category}
-          />
+          <CardBack card={backView} switchCard={switchToFront} />
         )}
         {isSummaryActive && <Summary correctAnswers={correctAnswers} />}
         <CounterWrapper>
-          <Heading>Correct answers: {correctAnswers}</Heading>
-          <Heading>Wrong answers: {wrongAnswers} </Heading>
+          <Paragraph counter>Correct answers: {correctAnswers}</Paragraph>
+          <Paragraph counter>Wrong answers: {wrongAnswers} </Paragraph>
         </CounterWrapper>
       </ContentWrapper>
     </MainTemplate>

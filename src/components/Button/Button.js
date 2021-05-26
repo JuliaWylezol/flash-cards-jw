@@ -17,6 +17,11 @@ const Button = styled.button`
     height: 55px;
     font-size: 20px;
   }
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 55px;
+    font-size: 16px;
+  }
 
   ${({ start }) =>
     start &&

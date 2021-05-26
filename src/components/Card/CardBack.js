@@ -7,7 +7,6 @@ import Paragraph from "../Paragraph/Paragraph";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import CloseIcon from "../../icons/close.svg";
 import AppContext from "../../context";
-import Heading from "../Heading/Heading";
 
 const CardWrapper = styled.div`
   width: 700px;
@@ -21,6 +20,9 @@ const CardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  @media (max-width: 750px) {
+    width: 600px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -30,27 +32,24 @@ const ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const CardBack = ({ card, switchCard, category }) => {
+const CardBack = ({ card, switchCard }) => {
   const { resetActiveDeck } = React.useContext(AppContext);
 
   return (
-    <>
-      <Heading>{category}</Heading>
-      <CardWrapper>
-        <ButtonIcon
-          as={Link}
-          to="/"
-          icon={CloseIcon}
-          onClick={() => resetActiveDeck()}
-          exit
-        />
-        <Paragraph>{card}</Paragraph>
-        <ButtonWrapper>
-          <Button onClick={() => switchCard("correct")}>Mark as correct</Button>
-          <Button onClick={() => switchCard("wrong")}>Mark as incorrect</Button>
-        </ButtonWrapper>
-      </CardWrapper>
-    </>
+    <CardWrapper>
+      <ButtonIcon
+        as={Link}
+        to="/"
+        icon={CloseIcon}
+        onClick={() => resetActiveDeck()}
+        exit
+      />
+      <Paragraph>{card}</Paragraph>
+      <ButtonWrapper>
+        <Button onClick={() => switchCard("correct")}>Mark as correct</Button>
+        <Button onClick={() => switchCard("wrong")}>Mark as incorrect</Button>
+      </ButtonWrapper>
+    </CardWrapper>
   );
 };
 

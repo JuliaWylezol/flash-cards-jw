@@ -35,6 +35,20 @@ const Paragraph = styled.p`
       font-size: ${({ theme }) => theme.fontSize.l};
       margin-bottom: 20px;
     `}
+
+    ${({ counter }) =>
+    counter &&
+    css`
+      color: ${({ theme }) => theme.yellow};
+      font-size: ${({ theme }) => theme.fontSize.l};
+      text-align: center;
+      @media (max-width: 660px) {
+        font-size: ${({ theme }) => theme.fontSize.m};
+      }
+      @media (max-width: 340px) {
+        font-size: 20px;
+      }
+    `}
 `;
 
 export default Paragraph;
