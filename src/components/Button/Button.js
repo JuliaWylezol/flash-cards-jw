@@ -29,6 +29,9 @@ const Button = styled.button`
       height: 50px;
       text-align: center;
       padding: 10px;
+      @media (max-width: 400px) {
+        height: 40px;
+      }
     `}
 
   ${({ finish }) =>

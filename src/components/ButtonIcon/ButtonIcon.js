@@ -56,6 +56,9 @@ const ButtonIcon = styled.button`
       height: 40px;
       margin-left: 10px;
       margin-top: 10px;
+      @media (max-width: 470px) {
+        width: 30px;
+      }
     `}
 `;
 

@@ -20,6 +20,20 @@ const ModalContentWrapper = styled.div`
   border-radius: 5px;
   position: fixed;
   z-index: 2;
+  @media (max-width: 1000px) {
+    width: 350px;
+  }
+  @media (max-width: 570px) {
+    width: 300px;
+    height: 50vh;
+  }
+  @media (max-width: 470px) {
+    width: 300px;
+    height: 45vh;
+  }
+  @media (max-width: 300px) {
+    width: 250px;
+  }
 `;
 
 const Overlay = styled.div`

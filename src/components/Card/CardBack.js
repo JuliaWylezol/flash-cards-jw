@@ -22,6 +22,18 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
   @media (max-width: 750px) {
     width: 600px;
+    height: 400px;
+  }
+  @media (max-width: 600px) {
+    width: 500px;
+    height: 35vh;
+  }
+  @media (max-width: 470px) {
+    width: 400px;
+  }
+  @media (max-width: 370px) {
+    width: 300px;
+    height: 25vh;
   }
 `;
 

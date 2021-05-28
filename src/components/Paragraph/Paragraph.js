@@ -34,6 +34,9 @@ const Paragraph = styled.p`
       color: black;
       font-size: ${({ theme }) => theme.fontSize.l};
       margin-bottom: 20px;
+      @media (max-width: 570px) {
+        font-size: 26px;
+      }
     `}
 
     ${({ counter }) =>
