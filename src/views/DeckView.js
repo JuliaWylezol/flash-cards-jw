@@ -1,9 +1,10 @@
 import React from "react";
 import AppContext from "../context";
 import Card from "./Card";
+import { decks } from "../data";
 
 const DeckView = () => {
-  const { decks, activeDeckIndex } = React.useContext(AppContext);
+  const { activeDeckIndex } = React.useContext(AppContext);
   let indexOfDeck;
   if (activeDeckIndex === null) {
     indexOfDeck = Math.floor(Math.random() * decks.length);

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import AppContext from "../context";
 import Heading from "../components/Heading/Heading";
 import ButtonIcon from "../components/ButtonIcon/ButtonIcon";
 import MainTemplate from "../templates/MainTemplate";
 import BackIcon from "../icons/back.svg";
 import Form from "../components/Form/Form";
+import { decks } from "../data";
 
 const ContentWrapper = styled.div`
   width: 100%;
@@ -41,20 +41,16 @@ const CardWrapper = styled.div`
   }
 `;
 
-const CreateCard = () => {
-  const { decks } = React.useContext(AppContext);
-
-  return (
-    <MainTemplate>
-      <ButtonIcon as={Link} to="/" icon={BackIcon} back />
-      <ContentWrapper>
-        <Heading>Add new flash card</Heading>
-        <CardWrapper>
-          <Form decks={decks} />
-        </CardWrapper>
-      </ContentWrapper>
-    </MainTemplate>
-  );
-};
+const CreateCard = () => (
+  <MainTemplate>
+    <ButtonIcon as={Link} to="/" icon={BackIcon} back />
+    <ContentWrapper>
+      <Heading>Add new flash card</Heading>
+      <CardWrapper>
+        <Form decks={decks} />
+      </CardWrapper>
+    </ContentWrapper>
+  </MainTemplate>
+);
 
 export default CreateCard;

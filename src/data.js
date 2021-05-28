@@ -1,4 +1,4 @@
-const decks = [
+let decks = [
   {
     category: "Math",
     id: 0,
@@ -235,4 +235,8 @@ const decks = [
   },
 ];
 
-export default decks;
+const updateDecks = (newDecks) => {
+  decks = newDecks;
+};
+
+export { decks, updateDecks };
