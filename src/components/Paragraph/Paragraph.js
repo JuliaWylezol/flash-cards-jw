@@ -34,6 +34,23 @@ const Paragraph = styled.p`
       color: black;
       font-size: ${({ theme }) => theme.fontSize.l};
       margin-bottom: 20px;
+      @media (max-width: 570px) {
+        font-size: 26px;
+      }
+    `}
+
+    ${({ counter }) =>
+    counter &&
+    css`
+      color: ${({ theme }) => theme.yellow};
+      font-size: ${({ theme }) => theme.fontSize.l};
+      text-align: center;
+      @media (max-width: 660px) {
+        font-size: ${({ theme }) => theme.fontSize.m};
+      }
+      @media (max-width: 340px) {
+        font-size: 20px;
+      }
     `}
 `;
 

@@ -5,8 +5,8 @@ import LeftArrowIcon from "../../icons/leftArrow.svg";
 import RightArrowIcon from "../../icons/rightArrow.svg";
 
 const ArrowWrapper = styled.div`
-  position: absolute;
-  bottom: 10px;
+  position: relative;
+  bottom: 5px;
   left: 0;
   right: 0;
   margin: auto;

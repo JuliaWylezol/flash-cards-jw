@@ -17,6 +17,11 @@ const Button = styled.button`
     height: 55px;
     font-size: 20px;
   }
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 55px;
+    font-size: 16px;
+  }
 
   ${({ start }) =>
     start &&
@@ -24,6 +29,9 @@ const Button = styled.button`
       height: 50px;
       text-align: center;
       padding: 10px;
+      @media (max-width: 400px) {
+        height: 40px;
+      }
     `}
 
   ${({ finish }) =>

@@ -1,16 +1,14 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
 import AppContext from "../context";
 import MainTemplate from "../templates/MainTemplate";
-import store from "../store";
 import Card from "../views/Card";
 import Categories from "../views/Categories";
 import CreateCard from "../views/CreateCard";
 import MainMenu from "../views/MainMenu";
 import Modal from "../components/Modal/Modal";
 import Deck from "../views/DeckView";
-import decks from "../data";
+import { decks, updateDecks } from "../data";
 
 class Root extends React.Component {
   constructor(props) {
@@ -44,12 +42,8 @@ class Root extends React.Component {
     const deck = this.state.decks[index];
     const { category } = deck;
     const numberOfCards = deck.cards.length;
-    const {
-      timesPlayed,
-      correctAnswers,
-      wrongAnswers,
-      lastPlayed,
-    } = deck.infoData;
+    const { timesPlayed, correctAnswers, wrongAnswers, lastPlayed } =
+      deck.infoData;
 
     this.setState({
       modalInfo: {
@@ -95,9 +89,10 @@ class Root extends React.Component {
       currentDecks.length
     );
     const newDecks = firstPart.concat(secondPart);
+    updateDecks(newDecks);
     this.setState({
       isModalOpen: false,
-      decks: newDecks,
+      decks: decks,
       modalInfo: {
         category: "None",
         numberOfCards: 0,
@@ -137,7 +132,8 @@ class Root extends React.Component {
 
     decksAfter[indexOfDeck] = deckToAddCard;
 
-    this.setState({ decks: decksAfter });
+    updateDecks(decksAfter);
+    this.setState({ decks: decks });
     // window.localStorage.setItem("decks", JSON.stringify(decksAfter));
   };
 
@@ -162,7 +158,8 @@ class Root extends React.Component {
 
     const decksAfter = [...this.state.decks, newDeck];
 
-    this.setState({ decks: decksAfter });
+    updateDecks(decksAfter);
+    this.setState({ decks: decks });
     // window.localStorage.setItem("decks", JSON.stringify(decksAfter));
     // console.log(this.state.decks);
   };
@@ -204,7 +201,8 @@ class Root extends React.Component {
     };
     updatedDeck.infoData = updatedInfo;
     allDecks[index] = updatedDeck;
-    this.setState({ decks: allDecks });
+    updateDecks(allDecks);
+    this.setState({ decks: decks });
     // window.localStorage.setItem("decks", JSON.stringify(decks));
   };
 
@@ -220,13 +218,13 @@ class Root extends React.Component {
     };
     updatedDeck.infoData = updatedInfo;
     allDecks[index] = updatedDeck;
-    this.setState({ decks: allDecks });
+    updateDecks(allDecks);
+    this.setState({ decks: decks });
     // window.localStorage.setItem("decks", JSON.stringify(decks));
   };
 
   render() {
     const providerValue = {
-      decks: this.state.decks,
       activeDeckIndex: this.state.activeDeckIndex,
       openModal: this.openModal,
       resetActiveDeck: this.resetActiveDeck,
@@ -236,30 +234,28 @@ class Root extends React.Component {
     };
 
     return (
-      <Provider store={store}>
-        <MainTemplate>
-          <BrowserRouter>
-            <AppContext.Provider value={providerValue}>
-              <Switch>
-                <Route exact path="/" component={MainMenu} />
-                <Route path="/card" component={Card} />
-                <Route path="/deck" component={Deck} />
-                <Route exact path="/categories" component={Categories} />
-                <Route path="/create" component={CreateCard} />
-              </Switch>
-              {this.state.isModalOpen && (
-                <Modal
-                  closeModalFn={() => this.closeModal()}
-                  startDeckFn={() => this.startDeck()}
-                  modalInfo={this.state.modalInfo}
-                  deleteCategory={() => this.deleteCategory()}
-                  updateModalInfoFn={() => this.updateModalInfo()}
-                />
-              )}
-            </AppContext.Provider>
-          </BrowserRouter>
-        </MainTemplate>
-      </Provider>
+      <MainTemplate>
+        <BrowserRouter>
+          <AppContext.Provider value={providerValue}>
+            <Switch>
+              <Route exact path="/" component={MainMenu} />
+              <Route path="/card" component={Card} />
+              <Route path="/deck" component={Deck} />
+              <Route exact path="/categories" component={Categories} />
+              <Route path="/create" component={CreateCard} />
+            </Switch>
+            {this.state.isModalOpen && (
+              <Modal
+                closeModalFn={() => this.closeModal()}
+                startDeckFn={() => this.startDeck()}
+                modalInfo={this.state.modalInfo}
+                deleteCategory={() => this.deleteCategory()}
+                updateModalInfoFn={() => this.updateModalInfo()}
+              />
+            )}
+          </AppContext.Provider>
+        </BrowserRouter>
+      </MainTemplate>
     );
   }
 }

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Heading from "../Heading/Heading";
 import Paragraph from "../Paragraph/Paragraph";
 import Button from "../Button/Button";
 import AppContext from "../../context";
@@ -21,6 +20,21 @@ const CardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  @media (max-width: 750px) {
+    width: 600px;
+    height: 400px;
+  }
+  @media (max-width: 600px) {
+    width: 500px;
+    height: 35vh;
+  }
+  @media (max-width: 470px) {
+    width: 400px;
+  }
+  @media (max-width: 370px) {
+    width: 300px;
+    height: 25vh;
+  }
 `;
 
 const CardFront = ({ card, switchCard }) => {

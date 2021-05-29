@@ -28,6 +28,9 @@ const ButtonIcon = styled.button`
       right: 5px;
       width: 50px;
       height: 50px;
+      @media (max-width: 470px) {
+        width: 25px;
+      }
     `}
 
   ${({ back }) =>
@@ -38,9 +41,11 @@ const ButtonIcon = styled.button`
       padding: 0;
       top: 20px;
       right: 20px;
-      @media (max-width: 450px) {
+      @media (max-width: 535px) {
         width: 30px;
         height: 30px;
+        top: 10px;
+        right: 10px;
       }
     `}
 
@@ -51,6 +56,9 @@ const ButtonIcon = styled.button`
       height: 40px;
       margin-left: 10px;
       margin-top: 10px;
+      @media (max-width: 470px) {
+        width: 30px;
+      }
     `}
 `;
 
